@@ -4,6 +4,8 @@ import _ from "lodash";
 import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
+// NOTE: used sidebar start code from https://coreui.io/docs/components/sidebar/
+
 export default function Sidebar(props) {
   return (
     <div className="sidebar">

@@ -15,8 +15,8 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiY2NjZGVuaGFydCIsImEiOiJjamtzdjNuNHAyMjB4M3B0ZHVoY3l2MndtIn0.jkJIFGPTN7oSkQlHi0xtow";
 
 export default function root_init(node) {
-  let prods = window.tasks;
-  ReactDOM.render(<Root tasks={prods} />, node);
+  let prods = window.events;
+  ReactDOM.render(<Root events={prods} />, node);
 }
 
 class Root extends React.Component {

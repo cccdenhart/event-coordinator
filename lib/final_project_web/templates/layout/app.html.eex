@@ -6,41 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no"/>
     <title>FinalProject · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link href='https://api.mapbox.com/mapbox-assembly/mbx/v0.18.0/assembly.min.css' rel='stylesheet'>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar navbar-expand-sm navbar-light bg-white">
-        <div class="col-4">
-          <a class="navbar-brand" href="#">Event Planner</a>
-        </div>
-        <div class="col-8">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Events</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="row">
-        <div class="col-12">
-          <%= if get_flash(@conn, :info) do %>
-            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-          <% end %>
-          <%= if get_flash(@conn, :error) do %>
-            <p class="alert alert-danger" role="alert">
-              <%= get_flash(@conn, :error) %>
-            </p>
-          <% end %>
-        </div>
-      </div>
-
-      <%= render @view_module, @view_template, assigns %>
-    </div>
+    <div id="app"></div>
+    <script src='https://api.mapbox.com/mapbox-assembly/mbx/v0.18.0/assembly.js'></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

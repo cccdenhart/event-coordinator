@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import _ from "lodash";
 import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-import Header from "./header.jsx";
+import Sidebar from "./sidebar.jsx";
 import mapboxgl from "mapbox-gl";
 
 /*
@@ -15,8 +15,7 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiY2NjZGVuaGFydCIsImEiOiJjamtzdjNuNHAyMjB4M3B0ZHVoY3l2MndtIn0.jkJIFGPTN7oSkQlHi0xtow";
 
 export default function root_init(node) {
-  let prods = window.events;
-  ReactDOM.render(<Root events={prods} />, node);
+  ReactDOM.render(<Root />, node);
 }
 
 class Root extends React.Component {

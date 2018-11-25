@@ -23,6 +23,6 @@ import "bootstrap";
 import root_init from "./root";
 
 $(() => {
-  let node = $("#app")[0];
+  let node = $("#root")[0];
   root_init(node);
 });

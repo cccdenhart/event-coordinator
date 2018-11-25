@@ -1,5 +1,7 @@
-<div class="row">
-  <div class="col-12">
-    <h1>Welcome to The Event Planner</h1>
+<div id="root">
+  <div class="row">
+    <div class="col-12">
+      <p>React component loading...</p>
+    </div>
   </div>
 </div>

@@ -6,13 +6,13 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 // NOTE: used sidebar start code from https://coreui.io/docs/components/sidebar/
 
-export default function Sidebar(props) {
+export default function Sidenav(props) {
   return (
-    <div class="sidenav">
+    <div className="sidenav">
       <p>
         <a href="/sign_in">Sign in</a>
       </p>
-      <div class="core">
+      <div className="core">
         <h1>
           <a href="/">Event Coordinator</a>
         </h1>

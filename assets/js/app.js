@@ -21,6 +21,12 @@ import "bootstrap";
 
 // import root_init from "./root"
 import root_init from "./root";
+import sign_in_init from "./sign_in";
+
+$(() => {
+  let node = $("#sign_in")[0];
+  sign_in_init(node);
+});
 
 $(() => {
   let node = $("#root")[0];

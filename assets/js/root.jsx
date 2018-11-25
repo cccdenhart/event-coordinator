@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import _ from "lodash";
 import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-import Sidebar from "./sidebar.jsx";
+import Sidenav from "./sidenav";
 import mapboxgl from "mapbox-gl";
 
 /*
@@ -56,32 +56,16 @@ class Root extends React.Component {
 
     return (
       <div>
-        <Router>
-          <div>
-            <Route
-              path="/"
-              exact={true}
-              render={() => (
-                <div>
-                  <div className="inline-block absolute bottom right mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
-                    <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
-                  </div>
-                  <div
-                    ref={el => (this.mapContainer = el)}
-                    className="absolute top right left bottom"
-                  />
-                </div>
-              )}
-            />
-            <Sidebar />
-            <Route path="/sign_in" exact={true} render={() => <SignIn />} />
-            <Route
-              path="/users"
-              exact={true}
-              render={() => <UserList users={this.state.users} />}
-            />
+        <div>
+          <div className="inline-block absolute bottom right mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+            <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
           </div>
-        </Router>
+          <div
+            ref={el => (this.mapContainer = el)}
+            className="absolute top right left bottom"
+          />
+        </div>
+        <Sidenav />
       </div>
     );
   }

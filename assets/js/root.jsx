@@ -53,6 +53,8 @@ class Root extends React.Component {
   }
 
   render() {
+    const { lng, lat, zoom } = this.state;
+
     return (
       <div>
         <Router>

@@ -58,15 +58,23 @@ class Root extends React.Component {
       <div>
         <Router>
           <div>
-            <div>
-              <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
-                <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
-              </div>
-              <div
-                ref={el => (this.mapContainer = el)}
-                className="absolute top right left bottom"
-              />
-            </div>
+            <Route
+              path="/"
+              exact={true}
+              render={() => (
+                <div>
+                  <div className="inline-block absolute bottom right mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+                    <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
+                  </div>
+                  <div
+                    ref={el => (this.mapContainer = el)}
+                    className="absolute top right left bottom"
+                  />
+                </div>
+              )}
+            />
+            <Sidebar />
+            <Route path="/sign_in" exact={true} render={() => <SignIn />} />
             <Route
               path="/users"
               exact={true}

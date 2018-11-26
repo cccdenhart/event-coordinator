@@ -24,9 +24,9 @@ class Root extends React.Component {
     super(props);
     this.state = {
       events: [],
-      lng: 5,
-      lat: 34,
-      zoom: 1.5
+      lng: -71.073329,
+      lat: 42.352738,
+      zoom: 12
     };
   }
 

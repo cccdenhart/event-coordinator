@@ -1,7 +1,48 @@
-<div id="root">
-  <div class="row">
-    <div class="col-12">
-      <p>React component loading...</p>
+<div>
+  <%= if @current_user do %>
+    <p id="logout" class="m-3 inline-block absolute top left">
+      User: <%= @current_user.email %> |
+      <%= link("Logout", to: Routes.session_path(@conn, :delete),
+        method: :delete) %>
+    </p>
+    <div id="root">
+      <div class="row">
+        <div class="col-12">
+          <p>React component loading...</p>
+        </div>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="container w-50 my-5">
+      <div class="h-100 justify-content-center align-items-center my-5">
+        <%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
+          <br />
+          <h1 style="font-weight: bold; font-size: 25px; text-align: center">Sign In</h1>
+          <br />
+          <div class="form-group">
+            <%= text_input f, :email, placeholder: "email", class: "form-control form-control-md" %>
+            <%= error_tag f, :email %>
+          </div>
+
+          <div class="form-group">
+            <%= text_input f, :password_hash, placeholder: "password", class: "form-control form-control-md" %>
+            <%= error_tag f, :password_hash %>
+          </div>
+
+          <div>
+            <%= submit "Submit", class: "btn btn-block btn-success", href: "/"%>
+          </div>
+        <% end %>
+
+        <div className="form-group">
+          <div className="col-md-12 control">
+            <div className="no-acc">
+              Don't have an account!
+              <a href="/users/new"> Sign Up Here </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -15,4 +15,4 @@
 </ul>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+<span><%= link "Home", to: Routes.page_path(@conn, :index) %></span>

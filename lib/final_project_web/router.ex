@@ -7,6 +7,7 @@ defmodule FinalProjectWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug FinalProjectWeb.Plugs.FetchSession
   end
 
   pipeline :api do
@@ -19,7 +20,7 @@ defmodule FinalProjectWeb.Router do
     get "/", PageController, :index
     get "/sign_in", PageController, :sign_in
     resources "/users", UserController
-
+    resources "/sessions", SessionController, only: [:create, :delete], singleton: true
   end
 
   # Other scopes may use custom stacks.

@@ -5,6 +5,7 @@ import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import Sidenav from "./sidenav";
 import mapboxgl from "mapbox-gl";
+import axios from "axios";
 
 /*
  * NOTE: https://github.com/mapbox/mapbox-react-examples referenced for starter
@@ -57,7 +58,7 @@ class Root extends React.Component {
     return (
       <div>
         <div>
-          <div className="inline-block absolute bottom right mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+          <div className="inline-block absolute top right mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
             <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
           </div>
           <div
@@ -65,7 +66,7 @@ class Root extends React.Component {
             className="absolute top right left bottom"
           />
         </div>
-        <Sidenav />
+        <Sidenav root={this} />
       </div>
     );
   }

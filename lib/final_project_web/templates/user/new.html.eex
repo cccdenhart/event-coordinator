@@ -1,5 +1,11 @@
-<h1>New User</h1>
+<div class="container w-50 my-5">
+  <div class="h-100 justify-content-center align-items-center">
+    <h1 style="font-weight: bold; text-align: center; font-size: 30px">Register</h1>
+    <br />
 
-<%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
+    <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+    <span><%= link "Home", to: Routes.page_path(@conn, :index) %></span>
+
+  </div>
+</div>

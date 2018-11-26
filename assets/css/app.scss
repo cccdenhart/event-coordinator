@@ -12,7 +12,7 @@
   left: 0;
   background-color: #111; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* The navigation menu links */
@@ -26,7 +26,7 @@
 }
 
 .sidenav .core {
-  padding-top: 20%;
+  padding-top: 50%;
 }
 
 .sidenav h1 a {
@@ -38,13 +38,13 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #818181;
 }
 
 .sidenav p:hover {

@@ -22,6 +22,7 @@ defmodule FinalProject.Users.User do
     |> validate_confirmation(:password)
     |> validate_password(:password)
     |> put_pass_hash()
+    |> unique_constraint(:email)
     |> validate_required([:email, :password_hash])
   end
 

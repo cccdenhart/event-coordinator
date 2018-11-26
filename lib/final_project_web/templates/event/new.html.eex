@@ -1,0 +1,14 @@
+<h1>New Event</h1>
+
+<%= for event <- @events.businesses do %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%=event.image_url %>" alt="No Image Available">
+    <div class="card-body">
+      <h5 class="card-title"><%= event.name %></h5>
+      <p class="card-text"><%= event.location.address1 %>, <%= event.location.city %></p>
+      <a href="<%=event.url %>" class="btn btn-primary">view</a>
+    </div>
+  </div>
+<% end %>
+
+<span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>

@@ -40,6 +40,12 @@ class Root extends React.Component {
       zoom
     });
 
+    map.on("load", () => {
+      var marker = new mapboxgl.Marker()
+        .setLngLat([-71.073329, 42.352738])
+        .addTo(map);
+    });
+
     map.on("move", () => {
       const { lng, lat } = map.getCenter();
 

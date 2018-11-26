@@ -3,7 +3,8 @@ defmodule FinalProjectWeb.EventController do
 
   alias FinalProject.Events
   alias FinalProject.Events.Event
-  
+  alias FinalProject.Users
+
   alias FinalProject.Api
 
   def index(conn, _params) do
@@ -12,11 +13,12 @@ defmodule FinalProjectWeb.EventController do
   end
 
   def new(conn, _params) do
+    cur_user = Users.get_user!(get_session(conn, :user_id))
     url = "https://api.yelp.com/v3/businesses/search"
     options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398]]
     response = Api.get(url, options)
     changeset = Events.change_event(%Event{})
-    render(conn, "new.html", changeset: changeset, events: Api.decode(response))
+    render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))
   end
 
   def create(conn, %{"event" => event_params}) do
@@ -63,5 +65,9 @@ defmodule FinalProjectWeb.EventController do
     conn
     |> put_flash(:info, "Event deleted successfully.")
     |> redirect(to: Routes.event_path(conn, :index))
+  end
+
+  def create_event_front(test_p) do
+    IO.inspect(test_p)
   end
 end

@@ -5,7 +5,7 @@ defmodule FinalProjectWeb.PageController do
     render conn, "index.html"
   end
 
-  def sign_in(conn, _params) do
-    render conn, "sign_in.html"
+  def search_path(conn, params) do
+    params
   end
 end

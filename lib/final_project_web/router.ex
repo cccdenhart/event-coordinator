@@ -18,10 +18,11 @@ defmodule FinalProjectWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/sign_in", PageController, :sign_in
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true
     resources "/events", EventController
+    post "/search_path", PageController, :search_path
+    post "/event", EventController, :create
   end
 
   # Other scopes may use custom stacks.

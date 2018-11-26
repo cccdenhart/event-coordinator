@@ -22,6 +22,7 @@ import "bootstrap";
 // import socket and root_init from "./root"
 import { Socket } from "phoenix";
 import root_init from "./root";
+import search_init from "./search";
 
 $(() => {
   let node = $("#root")[0];
@@ -29,4 +30,9 @@ $(() => {
   socket.connect();
   let channel = socket.channel("games:" + window.gameName, {});
   root_init(node, channel);
+});
+
+$(() => {
+  let node = $("#search")[0];
+  search_init(node);
 });

@@ -5,9 +5,12 @@ defmodule FinalProject.Events.Event do
 
   schema "events" do
     field :is_open, :boolean, default: false
-    field :location, :string
+    field :lng, :float
+    field :lat, :float
     field :rating, :float
     field :title, :string
+    field :email, :string
+    belongs_to :user, FinalProject.Users.User
 
     timestamps()
   end
@@ -15,7 +18,7 @@ defmodule FinalProject.Events.Event do
   @doc false
   def changeset(event, attrs) do
     event
-    |> cast(attrs, [:title, :location, :is_open, :rating])
-    |> validate_required([:title, :location, :is_open, :rating])
+    |> cast(attrs, [:title, :lng, :lat, :is_open, :rating, :user_id, :email])
+    |> validate_required([:title, :lng, :lat, :is_open, :user_id, :email])
   end
 end

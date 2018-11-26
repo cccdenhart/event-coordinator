@@ -15,8 +15,7 @@ export default function Sidenav(props) {
           <a href="/">Event Coordinator</a>
         </h1>
         <br />
-        <a href="#">Add Event</a>
-        <a href="#">Add Itinerary</a>
+        <a href="/events/new">Add Event</a>
         <a href="#">View Events</a>
       </div>
     </div>

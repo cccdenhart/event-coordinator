@@ -5,7 +5,6 @@ import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import Sidenav from "./sidenav";
 import mapboxgl from "mapbox-gl";
-import axios from "axios";
 
 /*
  * NOTE: https://github.com/mapbox/mapbox-react-examples referenced for starter

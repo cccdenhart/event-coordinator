@@ -48,7 +48,6 @@ defmodule FinalProject.MixProject do
       {:argon2_elixir, "~> 1.3"},
       {:httpoison, "~> 1.4"},
       {:poison, "~> 3.1"},
-      {:jason, "~> 1.0"},
     ]
   end
 

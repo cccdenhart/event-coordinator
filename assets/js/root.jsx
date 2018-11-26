@@ -55,6 +55,29 @@ class Root extends React.Component {
       zoom
     });
 
+    map.on("load", () => {
+      var marker = new mapboxgl.Marker()
+        .setLngLat([-71.073329, 42.352738])
+        .addTo(map);
+      for (e in this.state.events) {
+        var marker = new mapboxgl.Marker().setLngLat([e.lng, e.lat]).addTo(map);
+      }
+    });
+
+    map.on("click", () => {
+      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat([-71.073329, 42.352738])
+        .setHTML("<h3>Event1</h3><p>Starting at 5pm!</p>")
+        .setLngLat([-71.073329, 42.352738])
+        .addTo(map);
+      for (e in this.state.events) {
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat([e.lng, e.lat])
+          .setHTML("<h3>" + e.title + "</h3>")
+          .addTo(map);
+      }
+    });
+
     map.on("move", () => {
       const { lng, lat } = map.getCenter();
 

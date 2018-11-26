@@ -25,8 +25,8 @@
           </div>
 
           <div class="form-group">
-            <%= text_input f, :password_hash, placeholder: "password", class: "form-control form-control-md" %>
-            <%= error_tag f, :password_hash %>
+            <%= text_input f, :password, placeholder: "password", class: "form-control form-control-md" %>
+            <%= error_tag f, :password %>
           </div>
 
           <div>

@@ -1,8 +1,8 @@
 defmodule FinalProjectWeb.SessionController do
   use FinalProjectWeb, :controller
 
-  def create(conn, %{"email" => email}) do
-    user = FinalProject.Users.get_user_by_email(email)
+  def create(conn, %{"email" => email, "password" => pass }) do
+    user = get_and_auth_user(email, pass)
     if user do
       conn
       |> put_session(:user_id, user.id)
@@ -12,6 +12,14 @@ defmodule FinalProjectWeb.SessionController do
       conn
       |> put_flash(:error, "Login failed.")
       |> redirect(to: Routes.page_path(conn, :index))
+    end
+  end
+
+  def get_and_auth_user(email, password) do
+    user = FinalProject.Users.get_user_by_email(email)
+    case Comeonin.Argon2.check_pass(user, password) do
+      {:ok, user} -> user
+      _else       -> nil
     end
   end
 

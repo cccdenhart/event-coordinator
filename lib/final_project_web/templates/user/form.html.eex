@@ -12,12 +12,17 @@
     </div>
 
     <div class="form-group">
-      <%= text_input f, :password_hash, placeholder: "password", class: "form-control form-control-md" %>
-      <%= error_tag f, :password_hash %>
+      <%= password_input f, :password, placeholder: "password", class: "form-control form-control-md" %>
+      <%= error_tag f, :password %>
+    </div>
+
+    <div class="form-group">
+      <%= password_input f, :password_confirmation, placeholder: "password confirmation", class: "form-control" %>
+      <%= error_tag f, :password_confirmation %>
     </div>
 
     <div>
-      <%= submit "Submit", class: "btn btn-block btn-success", href: "/"%>
+      <%= submit "Submit", class: "btn btn-block btn-success" %>
     </div>
   <% end %>
 </div>

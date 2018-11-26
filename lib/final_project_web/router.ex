@@ -19,9 +19,9 @@ defmodule FinalProjectWeb.Router do
 
     get "/", PageController, :index
     get "/sign_in", PageController, :sign_in
-    get "/events", PageController, :events
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true
+    resources "/events", EventController
   end
 
   # Other scopes may use custom stacks.

@@ -19,10 +19,14 @@ import "bootstrap";
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import root_init from "./root"
+// import socket and root_init from "./root"
+import { Socket } from "phoenix";
 import root_init from "./root";
 
 $(() => {
   let node = $("#root")[0];
-  root_init(node);
+  let socket = new Socket("/socket", { params: { token: window.userToken } });
+  socket.connect();
+  let channel = socket.channel("games:" + window.gameName, {});
+  root_init(node, channel);
 });

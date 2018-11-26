@@ -46,6 +46,8 @@ defmodule FinalProject.MixProject do
       {:distillery, "~> 2.0"},
       {:comeonin, "~> 4.1"},
       {:argon2_elixir, "~> 1.3"},
+      {:httpoison, "~> 1.4"},
+      {:poison, "~> 3.1"},
     ]
   end
 

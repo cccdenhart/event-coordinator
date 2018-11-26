@@ -49,6 +49,7 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: String.to_atom(get_secret.("prod_cookie"))
+  set vm_args: "rel/vm.args"
 end
 
 # You may define one or more releases in this file.

@@ -23,7 +23,6 @@ class Root extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
       events: [],
       lng: 5,
       lat: 34,

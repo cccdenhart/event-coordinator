@@ -3,7 +3,7 @@ defmodule FinalProject.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :email, :string
+      add :email, :string, null: false
       add :password_hash, :string
       add :pw_tries, :integer, null: false, default: 0
       add :pw_last_try, :utc_datetime
@@ -11,5 +11,6 @@ defmodule FinalProject.Repo.Migrations.CreateUsers do
       timestamps()
     end
 
+    create index(:users, [:email], unique: true)
   end
 end

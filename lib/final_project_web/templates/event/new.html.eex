@@ -35,7 +35,6 @@
 
               <div class="form-group">
                 <button class="btn btn-primary">Submit</button>
-                <%= link "Request Event", to: create_event_front(param: "test") %>
               </div>
             <% end %>
           </div>

@@ -14,15 +14,15 @@ import mapboxgl from "mapbox-gl";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiY2NjZGVuaGFydCIsImEiOiJjamtzdjNuNHAyMjB4M3B0ZHVoY3l2MndtIn0.jkJIFGPTN7oSkQlHi0xtow";
 
-export default function root_init(node, channel) {
-  ReactDOM.render(<Root channel={channel} />, node);
+export default function root_init(node) {
+  ReactDOM.render(<Root />, node);
 }
 
 class Root extends React.Component {
   constructor(props) {
     super(props);
 
-    this.channel = props.channel;
+    // this.channel = props.channel;
 
     this.state = {
       events: [],
@@ -31,19 +31,19 @@ class Root extends React.Component {
       zoom: 12
     };
 
-    this.channel
-      .join()
-      .receive("ok", this.receiveView.bind(this))
-      .receive("error", resp => {
-        console.log("Unable to join", resp);
-      });
+    // this.channel
+    //   .join()
+    //   .receive("ok", this.receiveView.bind(this))
+    //   .receive("error", resp => {
+    //     console.log("Unable to join", resp);
+    //   });
 
-    this.channel.on("update", this.receiveView.bind(this));
+    //this.channel.on("update", this.receiveView.bind(this));
   }
 
-  receiveView(view) {
-    this.setState({ events: view.events });
-  }
+  // receiveView(view) {
+  //   this.setState({ events: view.events });
+  // }
 
   componentDidMount() {
     const { lng, lat, zoom } = this.state;

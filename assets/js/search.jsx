@@ -35,9 +35,9 @@ class Search extends React.Component {
           type="text"
           placeholder="Search"
           aria-label="Search"
-          onChange={this.handleKeywordChange}
+          onChange={this.handleKeywordChange.bind(this)}
         />
-        <button type="button" className="btn btn-block btn-success" onClick={this.handleSubmit}>Search</button>
+        <button type="button" className="btn btn-block btn-success" onClick={this.handleSubmit.bind(this)}>Search</button>
       </form>
     );
   }

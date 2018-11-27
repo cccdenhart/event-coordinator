@@ -21,6 +21,7 @@ defmodule FinalProjectWeb.Router do
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true
     resources "/events", EventController
+    get "/add_event/:id", EventController, :add_event
   end
 
   # Other scopes may use custom stacks.

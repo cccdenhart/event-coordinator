@@ -15,6 +15,20 @@ defmodule FinalProjectWeb.EventController do
     render conn, "index.json", events: events
   end
 
+  def add_event(conn, %{"id" => id}) do
+    time = Backup.get_backup("time") || ""
+    cur_user = Users.get_user!(get_session(conn, :user_id))
+    url = "https://api.yelp.com/v3/businesses/#{id}"
+    response = Api.get(url, [])
+    event = Api.decode(response)
+    Repo.insert(%Event{title: event.name, lat: Float.round(event.coordinates.latitude, 4), lng: Float.round(event.coordinates.longitude, 4), rating: event.rating, time: time, user_id: cur_user.id})
+    events = Events.list_events()
+    #render(conn, "index.html", events: events)
+    conn
+        |> put_flash(:info, "Event added successfully.")
+        |> redirect(to: Routes.page_path(conn, :index))
+  end
+
   def new(conn, _params) do
     search = Backup.get_backup("search") || ""
     cur_user = :user_id
@@ -22,7 +36,7 @@ defmodule FinalProjectWeb.EventController do
     options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398, term: search]]
     response = Api.get(url, options)
     changeset = Events.change_event(%Event{})
-    render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))
+    render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response),  struct: %Event{})
   end
 
   def create(conn, %{"event" => event_params}) do

@@ -1,36 +1,9 @@
 <h1>Listing Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Time</th>
-      <th>Rating</th>
-      <th>User</th>
+    <%= for event <- @events do %>
+    <p><%= event.title %></p>
+    <p><%= event.time %></p>
+    <% end %>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for event <- @events do %>
-    <tr>
-      <td><%= event.title %></td>
-      <td><%= event.lat %></td>
-      <td><%= event.lng %></td>
-      <td><%= event.time %></td>
-      <td><%= event.rating %></td>
-      <td><%= event.user_id %></td>
-
-      <td>
-        <%= link "Show", to: Routes.event_path(@conn, :show, event) %>
-        <%= link "Edit", to: Routes.event_path(@conn, :edit, event) %>
-        <%= link "Delete", to: Routes.event_path(@conn, :delete, event), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
 
 <span><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>

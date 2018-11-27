@@ -7,9 +7,11 @@ defmodule FinalProjectWeb.SearchChannel do
     {:ok, socket}
   end
 
-  def handle_in("searchString", %{"search" => search}, socket) do
+  def handle_in("searchString", %{"search" => search, "time" => time}, socket) do
     socket = assign(socket, :search, search)
+    socket = assign(socket, :time, time)
     Backup.backup_state("search", socket.assigns[:search])
+    Backup.backup_state("time", socket.assigns[:time])
 
     # {:reply, {:ok, %{ "search" => search}}, socket}
     {:noreply, socket}

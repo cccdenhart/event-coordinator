@@ -15,24 +15,21 @@
 
     <div class="row">
     <%= for event <- @view_events.businesses do %>
+      <%= form_tag("/event", method: :post) do %>
       <div class="col-4">
         <div class="card" style="width: 18rem; margin-bottom: 1rem;">
           <img class="card-img-top" src="<%=event.image_url %>" alt="No Image Available" style="height: 15rem">
           <div class="card-body">
-            <h5 style="font-weight: bold" class="card-title"><%= event.name %></h5>
-            <ul>
-              <li class="card-text">Latitude: <%= event.coordinates.latitude %></li>
-              <li class="card-text">Longitude: <%= event.coordinates.longitude %></li>
-              <li class="card-text">Rating: <%= event.rating %></li>
-            </ul>
+            <h5 class="card-title"><%= event.name %></h5>
+            <p class="card-text"><%= event.location.address1 %>, <%= event.location.city %></p>
             <a href="<%=event.url %>" class="btn btn-primary">view</a>
+            <span><%= link "Submit", to: Routes.event_path(@conn, :add_event, event.id) %></span>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
     </div>
-
-    <%= render "form.html", Map.put(assigns, :action, Routes.event_path(@conn, :create)) %>
 
     <span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>
 

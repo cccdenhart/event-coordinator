@@ -11,7 +11,8 @@ class Search extends React.Component {
     super(props);
     this.channel = props.channel;
     this.state = {
-      keyword: ""
+      keyword: "", 
+      time: ""
     };
 
     this.channel
@@ -28,9 +29,13 @@ class Search extends React.Component {
     this.setState({ keyword: e.target.value });
   }
 
+  handleTimeChange(e) {
+    this.setState({ time: e.target.value });
+  }
+
   handleSubmit() {
     console.log(this.state.keyword);
-    this.channel.push("searchString", { search: this.state.keyword });
+    this.channel.push("searchString", { search: this.state.keyword, time: this.state.time });
   }
 
   render() {
@@ -42,6 +47,14 @@ class Search extends React.Component {
           placeholder="Search"
           aria-label="Search"
           onChange={this.handleKeywordChange.bind(this)}
+        />
+
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Time for event"
+          aria-label="Time for event"
+          onChange={this.handleTimeChange.bind(this)}
         />
 
         <a

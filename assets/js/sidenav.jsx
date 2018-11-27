@@ -16,7 +16,6 @@ export default function Sidenav(props) {
         </h1>
         <br />
         <a href="/events/new">Add Event</a>
-        <a href="/events">View Events</a>
       </div>
     </div>
   );

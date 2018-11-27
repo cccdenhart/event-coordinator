@@ -22,10 +22,7 @@
             <h5 class="card-title"><%= event.name %></h5>
             <p class="card-text"><%= event.location.address1 %>, <%= event.location.city %></p>
             <a href="<%=event.url %>" class="btn btn-primary">view</a>
-
-              <div class="form-group">
-                <button class="btn btn-primary">Submit</button>
-              </div>
+            <span><%= link "Submit", to: Routes.event_path(@conn, :add_event, %{title: event.name, lat: event.lat, lng: event.lng, rating: event.rating, time: "9pm", user: @cur_user}) %></span>
             <% end %>
           </div>
         </div>

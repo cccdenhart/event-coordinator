@@ -14,18 +14,23 @@ class Search extends React.Component {
       keyword: ""
     };
 
-    this.channel.join()
-      .receive("ok", resp => { console.log("Joined channel", resp) })
-      .receive("error", resp => { console.log("Unable to join", resp) });
+    this.channel
+      .join()
+      .receive("ok", resp => {
+        console.log("Joined channel", resp);
+      })
+      .receive("error", resp => {
+        console.log("Unable to join", resp);
+      });
   }
 
   handleKeywordChange(e) {
-    this.setState({keyword: e.target.value})
+    this.setState({ keyword: e.target.value });
   }
 
   handleSubmit() {
-    console.log(this.state.keyword)
-    this.channel.push("searchString", {search: this.state.keyword})
+    console.log(this.state.keyword);
+    this.channel.push("searchString", { search: this.state.keyword });
   }
 
   render() {
@@ -39,7 +44,14 @@ class Search extends React.Component {
           onChange={this.handleKeywordChange.bind(this)}
         />
 
-        <a type="button" href="/events/new" className="btn btn-block btn-success" onClick={this.handleSubmit.bind(this)}>Search</a>
+        <a
+          type="button"
+          href="/events/new"
+          className="btn btn-block btn-success"
+          onClick={this.handleSubmit.bind(this)}
+        >
+          Search
+        </a>
       </form>
     );
   }

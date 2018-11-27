@@ -1,6 +1,7 @@
 <div class="container">
     <br />
     <h1 style="font-weight: bold; text-align: center; font-size: 30px">Find an event</h1>
+    <p style="text-align: center">Search for a venue, then scroll to the bottom and add your event</p>
     <br />
 
     <div id="search">
@@ -18,7 +19,7 @@
         <div class="card" style="width: 18rem; margin-bottom: 1rem;">
           <img class="card-img-top" src="<%=event.image_url %>" alt="No Image Available" style="height: 15rem">
           <div class="card-body">
-            <h5 class="card-title"><%= event.name %></h5>
+            <h5 style="font-weight: bold" class="card-title"><%= event.name %></h5>
             <ul>
               <li class="card-text">Latitude: <%= event.coordinates.latitude %></li>
               <li class="card-text">Longitude: <%= event.coordinates.longitude %></li>

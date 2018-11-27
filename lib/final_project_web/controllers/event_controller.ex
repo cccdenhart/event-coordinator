@@ -34,7 +34,7 @@ defmodule FinalProjectWeb.EventController do
       {:ok, event} ->
         conn
         |> put_flash(:info, "Event created successfully.")
-        |> redirect(to: Routes.page_path(conn, :index, event))
+        |> redirect(to: Routes.page_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))

@@ -24,6 +24,7 @@ class Search extends React.Component {
   }
 
   handleSubmit() {
+    console.log(this.state.keyword)
     this.channel.push("searchString", {search: this.state.keyword})
   }
 
@@ -37,7 +38,8 @@ class Search extends React.Component {
           aria-label="Search"
           onChange={this.handleKeywordChange.bind(this)}
         />
-        <button type="button" className="btn btn-block btn-success" onClick={this.handleSubmit.bind(this)}>Search</button>
+
+        <a type="button" href="/events/new" className="btn btn-block btn-success" onClick={this.handleSubmit.bind(this)}>Search</a>
       </form>
     );
   }

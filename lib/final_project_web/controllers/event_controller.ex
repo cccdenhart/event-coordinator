@@ -4,6 +4,7 @@ defmodule FinalProjectWeb.EventController do
   alias FinalProject.Events
   alias FinalProject.Events.Event
   alias FinalProject.Users
+  alias FinalProject.Backup
 
   alias FinalProject.Api
 
@@ -13,9 +14,10 @@ defmodule FinalProjectWeb.EventController do
   end
 
   def new(conn, _params) do
+    search = Backup.get_backup("search") || ""
     cur_user = Users.get_user!(get_session(conn, :user_id))
     url = "https://api.yelp.com/v3/businesses/search"
-    options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398]]
+    options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398, term: search]]
     response = Api.get(url, options)
     changeset = Events.change_event(%Event{})
     render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))

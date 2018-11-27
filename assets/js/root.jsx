@@ -22,28 +22,13 @@ class Root extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.channel = props.channel;
-
     this.state = {
       events: [],
       lng: -71.073329,
       lat: 42.352738,
       zoom: 12
     };
-
-    // this.channel
-    //   .join()
-    //   .receive("ok", this.receiveView.bind(this))
-    //   .receive("error", resp => {
-    //     console.log("Unable to join", resp);
-    //   });
-
-    //this.channel.on("update", this.receiveView.bind(this));
   }
-
-  // receiveView(view) {
-  //   this.setState({ events: view.events });
-  // }
 
   componentDidMount() {
     const { lng, lat, zoom } = this.state;

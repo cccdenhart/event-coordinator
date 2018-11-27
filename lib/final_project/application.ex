@@ -14,6 +14,7 @@ defmodule FinalProject.Application do
       FinalProjectWeb.Endpoint,
       # Starts a worker by calling: FinalProject.Worker.start_link(arg)
       # {FinalProject.Worker, arg},
+      FinalProject.Backup
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

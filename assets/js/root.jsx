@@ -68,9 +68,6 @@ class Root extends React.Component {
     });
 
     map.on("load", () => {
-      var marker = new mapboxgl.Marker()
-        .setLngLat([-71.073329, 42.352738])
-        .addTo(map);
       for (let i = 0; i < this.state.events.length; i++) {
         let e = this.state.events[i];
         var marker = new mapboxgl.Marker().setLngLat([e.lng, e.lat]).addTo(map);
@@ -78,11 +75,6 @@ class Root extends React.Component {
     });
 
     map.on("click", () => {
-      var popup = new mapboxgl.Popup({ offset: [0, -15] })
-        .setLngLat([-71.073329, 42.352738])
-        .setHTML("<h3>Event1</h3><p>Starting at 5pm!</p>")
-        .setLngLat([-71.073329, 42.352738])
-        .addTo(map);
       for (let i = 0; i < this.state.events.length; i++) {
         let e = this.state.events[i];
         var popup = new mapboxgl.Popup({ offset: [0, -15] })

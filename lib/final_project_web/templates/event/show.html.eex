@@ -8,18 +8,28 @@
   </li>
 
   <li>
-    <strong>Location:</strong>
-    <%= @event.location %>
+    <strong>Latitude:</strong>
+    <%= @event.lat %>
   </li>
 
   <li>
-    <strong>Is open:</strong>
-    <%= @event.is_open %>
+    <strong>Longitude:</strong>
+    <%= @event.lng %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @event.time %>
   </li>
 
   <li>
     <strong>Rating:</strong>
     <%= @event.rating %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @event.user_id %>
   </li>
 
 </ul>

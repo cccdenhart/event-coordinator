@@ -5,6 +5,7 @@ import $ from "jquery";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import Sidenav from "./sidenav";
 import mapboxgl from "mapbox-gl";
+import axios from "axios";
 
 /*
  * NOTE: https://github.com/mapbox/mapbox-react-examples referenced for starter
@@ -28,6 +29,32 @@ class Root extends React.Component {
       lat: 42.352738,
       zoom: 12
     };
+
+    this.fetch_events();
+  }
+
+  fetch_events() {
+    $.ajax("/events", {
+      method: "get",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: "",
+      success: resp => {
+        let state1 = _.assign({}, this.state, { events: resp.data });
+        this.setState(state1);
+      }
+    });
+  }
+
+  componentWillMount() {
+    axios
+      .get("http://localhost:4000/events")
+      .then(response => {
+        this.setState({ events: response.data.events });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -44,7 +71,8 @@ class Root extends React.Component {
       var marker = new mapboxgl.Marker()
         .setLngLat([-71.073329, 42.352738])
         .addTo(map);
-      for (e in this.state.events) {
+      for (let i = 0; i < this.state.events.length; i++) {
+        let e = this.state.events[i];
         var marker = new mapboxgl.Marker().setLngLat([e.lng, e.lat]).addTo(map);
       }
     });
@@ -55,10 +83,20 @@ class Root extends React.Component {
         .setHTML("<h3>Event1</h3><p>Starting at 5pm!</p>")
         .setLngLat([-71.073329, 42.352738])
         .addTo(map);
-      for (e in this.state.events) {
+      for (let i = 0; i < this.state.events.length; i++) {
+        let e = this.state.events[i];
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
           .setLngLat([e.lng, e.lat])
-          .setHTML("<h3>" + e.title + "</h3>")
+          .setHTML(
+            "<h1 style='font-weight: bold'>" +
+              e.title +
+              "</h1>" +
+              "<ul><li>Rating: " +
+              e.rating +
+              "</li><li>Time: " +
+              e.time +
+              "</li></ul>"
+          )
           .addTo(map);
       }
     });

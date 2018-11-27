@@ -4,9 +4,11 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Location</th>
-      <th>Is open</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Time</th>
       <th>Rating</th>
+      <th>User</th>
 
       <th></th>
     </tr>
@@ -15,9 +17,11 @@
 <%= for event <- @events do %>
     <tr>
       <td><%= event.title %></td>
-      <td><%= event.location %></td>
-      <td><%= event.is_open %></td>
+      <td><%= event.lat %></td>
+      <td><%= event.lng %></td>
+      <td><%= event.time %></td>
       <td><%= event.rating %></td>
+      <td><%= event.user_id %></td>
 
       <td>
         <%= link "Show", to: Routes.event_path(@conn, :show, event) %>

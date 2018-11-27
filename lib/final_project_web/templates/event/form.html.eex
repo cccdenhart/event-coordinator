@@ -5,23 +5,37 @@
     </div>
   <% end %>
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
+  <div class="form-group">
+    <%= text_input f, :title, placeholder: "title", class: "form-control form-control-md" %>
+    <%= error_tag f, :title %>
+  </div>
 
-  <%= label f, :location %>
-  <%= text_input f, :location %>
-  <%= error_tag f, :location %>
+  <div class="form-group">
+    <%= number_input f, :lat, step: "any", placeholder: "latitude", class: "form-control form-control-md" %>
+    <%= error_tag f, :lat %>
+  </div>
 
-  <%= label f, :is_open %>
-  <%= checkbox f, :is_open %>
-  <%= error_tag f, :is_open %>
+  <div class="form-group">
+    <%= number_input f, :lng, step: "any", placeholder: "longitude", class: "form-control form-control-md" %>
+    <%= error_tag f, :lng %>
+  </div>
 
-  <%= label f, :rating %>
-  <%= number_input f, :rating, step: "any" %>
-  <%= error_tag f, :rating %>
+  <div class="form-group">
+    <%= number_input f, :rating, step: "any", placeholder: "rating", class: "form-control form-control-md" %>
+    <%= error_tag f, :rating %>
+  </div>
+
+  <div class="form-group">
+    <%= text_input f, :time, placeholder: "starting time", class: "form-control form-control-md" %>
+    <%= error_tag f, :time %>
+  </div>
+
+  <div class="form-group">
+    <%= number_input f, :user_id, value: @cur_user, placeholder: "User", class: "form-control form-control-md" %>
+    <%= error_tag f, :user_id %>
+  </div>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Submit", class: "btn btn-block btn-success" %>
   </div>
 <% end %>

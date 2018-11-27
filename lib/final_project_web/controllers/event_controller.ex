@@ -5,31 +5,31 @@ defmodule FinalProjectWeb.EventController do
   alias FinalProject.Events.Event
   alias FinalProject.Users
   alias FinalProject.Repo
+  import Ecto.Query
+  alias FinalProject.Backup
 
   alias FinalProject.Api
 
   def index(conn, _params) do
-    events = Events.list_events()
-    render(conn, "index.html", events: events)
-  end
-
-  def add_event(conn, event) do
-    IO.inspect("title:")
-    IO.inspect(event[:title])
-    Repo.insert(%Event{title: event[:title], lat: event[:lat], lng: event[:lng], rating: event[:rating], time: event[:time], user_id: event[:user]})# lng: lng, lat: lat, rating: rat, time: time, user_id: user})
-    render(conn, "index.html")
+    events = Repo.all(Event)
+    render conn, "index.json", events: events
   end
 
   def new(conn, _params) do
-    cur_user = Users.get_user!(get_session(conn, :user_id))
+    search = Backup.get_backup("search") || ""
+    cur_user = :user_id
     url = "https://api.yelp.com/v3/businesses/search"
-    options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398]]
+    options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398, term: search]]
     response = Api.get(url, options)
     changeset = Events.change_event(%Event{})
     render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))
   end
 
   def create(conn, %{"event" => event_params}) do
+    cur_user = Users.get_user!(get_session(conn, :user_id))
+    url = "https://api.yelp.com/v3/businesses/search"
+    options = [params: [sort_by: "distance", longitude: -71.0892, latitude: 42.3398]]
+    response = Api.get(url, options)
     case Events.create_event(event_params) do
       {:ok, event} ->
         conn
@@ -37,7 +37,7 @@ defmodule FinalProjectWeb.EventController do
         |> redirect(to: Routes.event_path(conn, :show, event))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, cur_user: cur_user, view_events: Api.decode(response))
     end
   end
 

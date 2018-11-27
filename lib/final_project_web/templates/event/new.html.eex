@@ -20,9 +20,9 @@
           <div class="card-body">
             <h5 class="card-title"><%= event.name %></h5>
             <ul>
-              <li class="card-text"><%= event.coordinates.latitude %></li>
-              <li class="card-text"><%= event.coordinates.longitude %></li>
-              <li class="card-text"><%= event.rating %></li>
+              <li class="card-text">Latitude: <%= event.coordinates.latitude %></li>
+              <li class="card-text">Longitude: <%= event.coordinates.longitude %></li>
+              <li class="card-text">Rating: <%= event.rating %></li>
             </ul>
             <a href="<%=event.url %>" class="btn btn-primary">view</a>
           </div>
